@@ -1,0 +1,34 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "homepage": "https://richarddd.github.io/global-hook-store/",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/styles": "^4.10.0",
+    "global-hook-store": "file:./../lib",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-scripts": "4.0.0",
+    "typescript": "^4.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.56",
+    "@types/react-dom": "16.9.9"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
