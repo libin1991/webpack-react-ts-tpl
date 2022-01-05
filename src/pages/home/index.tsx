@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import React, { useEffect } from "react";
-import useStore, { createStore, useLocalStore } from "@/lib/index";
+import useStore, { createStore, useLocalStore } from "@/lib/js/index";
 import counterStore from "./store";
 
 const Counter = () => {
@@ -57,8 +57,8 @@ export default function App() {
       <h2>Start editing to see some magic happen!</h2>
       <Counter />
       <Counter />
-      {/* <LocalCounter />
-      <LocalCounter /> */}
+      <LocalCounter />
+      <LocalCounter />
     </div>
   );
 }

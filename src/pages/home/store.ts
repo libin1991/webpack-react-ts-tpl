@@ -1,5 +1,5 @@
 // @ts-nocheck
-import useStore, { createStore, useLocalStore } from "@/lib/index";
+import useStore, { createStore, useLocalStore } from "@/lib/js/index";
 import produce from "immer";
 
 
