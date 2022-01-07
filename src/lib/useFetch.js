@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, } from 'react';
-
 const useFetch = (url, options) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -11,7 +10,9 @@ const useFetch = (url, options) => {
         const fetchOptions = options || {};
         let timeout;
         if (fetchOptions.timeout) {
-            timeout = setTimeout(() => abortControllerRef.current.abort(), fetchOptions.timeout);
+            timeout = setTimeout(() => {
+                abortControllerRef.current.abort();
+            }, fetchOptions.timeout);
         }
         fetch(url, { ...fetchOptions, signal: abortControllerRef.current.signal })
             .then(res => res.json())
