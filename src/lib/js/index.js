@@ -1,4 +1,4 @@
-import { useState, useEffect, SetStateAction, Dispatch, useMemo } from "react";
+import { useState, useEffect } from "react";
 import usePromise from "./usePromise";
 
 const deepClone = (obj) => {
@@ -55,6 +55,12 @@ const copyState = (state) => {
 const mapActions = (internals, reducers, stateReceiver) => {
   return Object.entries(reducers).reduce((acc, [key, reducer]) => {
     acc[key] = async (payload) => {
+
+      console.log({
+        internals, reducers, stateReceiver,
+        acc, key, reducer
+      })
+
       const currentState = copyState(stateReceiver.receiveState());
       if (window["GLOBAL_HOOK_DEBUG"]) {
         console.log(`Invoking action: ${key}\n- State before:`, currentState);
@@ -102,7 +108,8 @@ function createStore(
     actions: {},
     utils: {},
   };
-  const setState = (state) => {
+
+  function setState(state) {
     applySettersGetters(internals, state);
     actionStore.state = state;
     internals.setStateSet.forEach((setStateFunction) => {

@@ -5,7 +5,7 @@ import useStore, { createStore, useLocalStore } from "@/lib/js/index";
 import counterStore from "./store";
 
 const Counter = () => {
-  console.log(useStore(counterStore))
+  //console.log(useStore(counterStore))
   const {
     state: { count, age, name, list },
     actions
@@ -56,7 +56,7 @@ export default function App() {
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
       <Counter />
-      <Counter />
+      <Counter />  <Counter />
       <LocalCounter />
       <LocalCounter />
     </div>

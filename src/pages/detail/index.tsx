@@ -1,12 +1,36 @@
-import React from 'react'
-import{RouteComponentProps} from "react-router"
-// import ReactDom from "react-dom"
-import {Button} from "antd"
-type Props={
-  history:object
-}
-export default function index(props:RouteComponentProps) {
+import React from "react";
+import { useImmer } from "use-immer";
+export default function App() {
+  const [person, updatePerson] = useImmer({
+    name: "Michel",
+    age: 33
+  });
+
+  function updateName(name: string) {
+    updatePerson(draft => {
+      draft.name = name;
+    });
+  }
+
+  function becomeOlder() {
+    updatePerson(draft => {
+      draft.age++;
+    });
+  }
+
   return (
-    <Button onClick={()=>props.history.push('/')} type='primary'>按钮</Button>
-  )
+    <div className="App">
+      <h1>
+        Hello {person.name} <br /> {person.age}
+      </h1>
+      <input
+        onChange={e => {
+          updateName(e.target.value);
+        }}
+        value={person.name}
+      />
+      <br />
+      <button onClick={becomeOlder}>Older</button>
+    </div>
+  );
 }

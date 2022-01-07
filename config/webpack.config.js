@@ -1,5 +1,7 @@
 const resolveApp = require('./path.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('clean-friendly-errors-webpack-plugin');
+const WebpackProgressBar = require('webpack-progress-bar')
 module.exports = {
   entry: [resolveApp('src/index.tsx')],
   output: {
@@ -8,7 +10,8 @@ module.exports = {
     // crossOriginLoading:'use-credentials',
     libraryTarget: 'umd'
     // library:'myLiabrary'
-  },
+  }, stats: 'errors-only',
+  devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {
@@ -45,9 +48,15 @@ module.exports = {
     alias: {
       '@': resolveApp('src')
     },
-    extensions: ['.ts', '.tsx','.js', '.json', '.jsx', ]
+    extensions: ['.ts', '.tsx', '.js', '.json', '.jsx',]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: resolveApp('public/index.html') })
+    new HtmlWebpackPlugin({ template: resolveApp('public/index.html') }),
+    new WebpackProgressBar(),
+    new FriendlyErrorsWebpackPlugin({
+
+      // 是否每次都清空控制台
+      clearConsole: true,
+    })
   ]
 }
