@@ -5,7 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  <!-- <link rel="icon" href="./img/icon.jpg"> -->
+  <script>
+   function _scale(zoom) {
+                var meta = document.createElement('meta');
+                meta.name = 'viewport';
+                meta.content = "width=" + 750 + ", initial-scale=" + zoom + ", minimum-scale=" + zoom + ", maximum-scale=" + zoom + "";
+
+                document.getElementsByTagName('head')[0].appendChild(meta);
+            }
+
+            if (!window.isHeadLessBrowser) {
+                _scale(window.screen.width / 750);
+            }
+  </script>
 </head>
 <body>
     <div id='app'></div>
